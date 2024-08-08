@@ -1,0 +1,51 @@
+{
+  "data": {
+    "componentName": "projects",
+    "data": [
+      {
+        "proj_name": "VDO.ai",
+        "images": "../../assets/vdo.ai.jpg",
+        "title_head": "Next Generation Video...",
+        "title": "Next Generation Video Solutions for Publishers",
+        "subTitle": "Next Generation Video Solutions",
+        "organization_name": "VDO.ai",
+        "favicon": "../../assets/vdo-ai.webp",
+        "link": "https://www.vdo.ai/",
+        "bg_image": "../../assets/vdo.ai.jpg"
+      },
+      {
+        "proj_name": "Atlas5.co",
+        "images": "../../assets/atlas5.jpg",
+        "title_head": "Atlas5 AI for Publishers",
+        "title": "Atlas5 AI For Publishers",
+        "subTitle": "AI For Publishers",
+        "organization_name": "atlas5.co",
+        "favicon": "../../assets/atlas5-favicon.ico",
+        "link": "http://atlas5.co/",
+        "bg_image": "../../assets/atlas5.jpg"
+      },
+      {
+        "proj_name": "Innovads",
+        "images": "../../assets/innovads.png",
+        "title_head": "Innovative Ad Optimization...",
+        "title": "Innovative Ad Optimization Platform For Web Publishers",
+        "subTitle": "Monetize, Improve And Innovate",
+        "organization_name": "Innovads",
+        "favicon": "../../assets/vdo-ai.webp",
+        "link": "https://www.vdo.ai/sample/units/Prodcts_page/",
+        "bg_image": "../../assets/innovads.png"
+      },
+      {
+        "proj_name": "Hemant Rao",
+        "images": "../../assets/vdo.ai.jpg",
+        "title_head": "Hemant Rao - Front-End Developer",
+        "title": "Hemant Rao - Front-End Developer",
+        "subTitle": "Learn Something New Daily",
+        "organization_name": "VDO.ai",
+        "favicon": "../../assets/dev.png",
+        "link": "https://rao-hemant.000webhostapp.com/#/skills/",
+        "bg_image": "../../assets/hemant-rao.png"
+      }
+    ]
+  }
+}

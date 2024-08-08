@@ -1,0 +1,25 @@
+{
+    "data" : {
+        "componentName": "education",
+        "university": "AKTU Lucknow",
+        "college": "REC Bijnor",
+        "recURL": "http://recb.ac.in/",
+        "degree": "B. Tech",
+        "branch": "Information Technology",
+        "schoolName":"HIC Chandpur",
+        "hicURL": "https://upmsp.edu.in",
+        "board":"UP Board Lucknow",
+        "heighSchool":"High School",
+        "intermediate":"Intermediate",
+        "xml":"xml",
+        "cms":"cms",
+        "wordpress":"wordpress",
+        "other": "other",
+        "github":"Github",
+        "photoshop":"photoshop",
+        "storyLine":"storyLine 360",
+        "powerpoint":"powerpoint",
+        "word":"word",
+        "excel":"excel"
+      }
+}
