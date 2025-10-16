@@ -3,15 +3,48 @@
     "componentName": "projects",
     "data": [
       {
+        "proj_name": "NPM Packages",
+        "images": "../../assets/npm-packages.png",
+        "title_head": "NPM Packages by Hemant Rao",
+        "title": "NPM Packages by Hemant Rao",
+        "subTitle": "Upgrade my skills",
+        "organization_name": "https://www.npmjs.com/~mrhrao",
+        "favicon": "../../assets/npm-favicon.png",
+        "link": "https://www.npmjs.com/~mrhrao",
+        "bg_image": "../../assets/npm-packages.png"
+      },
+      {
+        "proj_name": "Daily Food Serve",
+        "images": "../../assets/dailyfoodserve.png",
+        "title_head": "Daily Food Serve",
+        "title": "Daily Food Serve",
+        "subTitle": "365-Day Healthy Indian Meal Plan",
+        "organization_name": "hemantrao.in",
+        "favicon": "../../assets/dailyfoodserve-favicon.png",
+        "link": "https://dailyfoodserve.com/",
+        "bg_image": "../../assets/dailyfoodserve.png"
+      },
+      {
+        "proj_name": "Sahastrabahu",
+        "images": "../../assets/sahastrabahu.jpg",
+        "title_head": "Sahastrabahu",
+        "title": "Sahastrabahu",
+        "subTitle": "Bridging Worlds Through Language",
+        "organization_name": "hemantrao.in",
+        "favicon": "../../assets/sahastrabahu-favicon.png",
+        "link": "https://sahastrabahu.dailyfoodserve.com/",
+        "bg_image": "../../assets/sahastrabahu.png"
+      },
+      {
         "proj_name": "VDO.ai",
-        "images": "../../assets/vdo.ai.jpg",
-        "title_head": "Next Generation Video...",
+        "images": "../../assets/vdo-ai.png",
+        "title_head": "Redefining Consumer Experiences",
         "title": "Next Generation Video Solutions for Publishers",
         "subTitle": "Next Generation Video Solutions",
         "organization_name": "VDO.ai",
         "favicon": "../../assets/vdo-ai.webp",
         "link": "https://www.vdo.ai/",
-        "bg_image": "../../assets/vdo.ai.jpg"
+        "bg_image": "../../assets/vdo-ai.png"
       },
       {
         "proj_name": "Atlas5.co",
@@ -41,9 +74,9 @@
         "title_head": "Hemant Rao - Front-End Developer",
         "title": "Hemant Rao - Front-End Developer",
         "subTitle": "Learn Something New Daily",
-        "organization_name": "VDO.ai",
+        "organization_name": "hemantrao.in",
         "favicon": "../../assets/dev.png",
-        "link": "https://rao-hemant.000webhostapp.com/#/skills/",
+        "link": "https://hemantrao.in/#/skills/",
         "bg_image": "../../assets/hemant-rao.png"
       }
     ]

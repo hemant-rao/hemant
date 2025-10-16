@@ -112,7 +112,24 @@
                 "showImage": "true",
                 "showBackground": "false",
                 "showTitle": "true",
-                "title": "Angular"
+                "title": "Angular22"
+            },
+            "Vue3": {
+                "skillName": "Vue3",
+                "percent": "80",
+                "radius": "100",
+                "radiusS": "60",
+                "outerStrokeWidth": "10",
+                "innerStrokeWidth": "6",
+                "outerStrokeColor": "#e44d26",
+                "innerStrokeColor": "#f16529",
+                "imageSrc": "../../assets/Vue3.png",
+                "imageHeight": "50",
+                "imageWidth": "50",
+                "showImage": "true",
+                "showBackground": "false",
+                "showTitle": "true",
+                "title": "Vue3"
             },
             "Bootstrap": {
                 "skillName": "Bootstrap",
@@ -152,6 +169,23 @@
         },
         "others": {
             "others": "others",
+            "Azure": {
+                "skillName": "Azure",
+                "percent": "60",
+                "radius": "100",
+                "radiusS": "60",
+                "outerStrokeWidth": "10",
+                "innerStrokeWidth": "6",
+                "outerStrokeColor": "#e44d26",
+                "innerStrokeColor": "#f16529",
+                "imageSrc": "../../assets/azure.png",
+                "imageHeight": "50",
+                "imageWidth": "50",
+                "showImage": "true",
+                "showBackground": "false",
+                "showTitle": "true",
+                "title": "Azure"
+            },
             "GitHub": {
                 "skillName": "Github",
                 "percent": "80",
