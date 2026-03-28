@@ -3,81 +3,89 @@
         "componentName": "experience",
         "expertise": {
             "fast": "Fast",
-            "fastContent": "Fast load times and lag free interaction, my highest priority.",
+            "fastContent": "Prioritizing fast load times and lag-free interaction for a smooth user experience.",
             "responsive": "Responsive",
-            "resContent": "My layouts will work on any device, big or small.",
+            "resContent": "Ensuring layouts work flawlessly across all devices, from mobile to ultra-wide displays.",
             "intuitive": "Intuitive",
-            "IntuitiveContent": "Strong preference for easy to use, intuitive UX/UI.",
+            "IntuitiveContent": "Crafting intuitive and user-friendly UX/UI designs with a focus on simplicity.",
             "dynamic": "Dynamic",
-            "dynamicContent": "Websites don't have to be static, I love making pages come to life."
+            "dynamicContent": "Beyond static pages, I specialize in creating dynamic, interactive digital experiences."
         },
-        "experience1": {
-            "companyName": "Futech Internet Pvt. Ltd",
-            "rolResp": "Role and Responsibility",
-            "expRange": "07/2020 - Present",
-            "Role": "Jr. Front-end Developer",
-            "projName": "Admin Dashboard",
-            "projP1": {
-                "p1": "Develop web pages by using HTML, and CSS and deploy the script using with JavaScript.",
-                "p2": "vdo.ai",
-                "p3": "atlas.co"
+        "jobs": [
+            {
+                "companyName": "Evalueserve Pvt. Ltd.",
+                "rolResp": "Gurgaon, Haryana, India",
+                "expRange": "09/2021 - Present",
+                "Role": "Senior Engineer",
+                "projects": [
+                    {
+                        "projName": "Web Development (Achievements/Tasks)",
+                        "points": [
+                            "Designed and developed multiple enterprise internal dashboards using Vue.js (Vue 2 & Vue 3).",
+                            "Designed and implemented data-driven UI components integrated with backend APIs.",
+                            "Built scalable dashboard interfaces handling large datasets and high-frequency API responses.",
+                            "Developed an organization-wide Appreciation Dashboard, allowing employees across the company to recognize and appreciate colleagues.",
+                            "Implemented dynamic UI modules, reusable components, and responsive layouts.",
+                            "Collaborated with backend teams to integrate APIs and optimize data rendering in dashboards."
+                        ]
+                    }
+                ]
             },
-            "projP2": "Admin dashboard developed by HTML, CSS, JS, Bootstrap, JQuery, Ajax.",
-            "projP3": "Admin dashboard developed by HTML, CSS, Material-UI, React-js, Ajax."
-        },
-        "experience2": {
-            "companyName": "NIIT LTD.",
-            "rolResp": "Role and Responsibility",
-            "expRange": "04/2019 - 05-2020",
-            "Role": "HTML Developer",
-            "proj1": {
-                "projName": "Angular Project",
-                "p1": "Designed the web pages by using HTML, XHTML, CSS and deploy the script using with JavaScript.",
-                "p2": "Implemented user interface guidelines and standards throughout the development and maintenance of the website using JavaScript, JQuery, CSS and HTML.",
-                "p3": "Implemented and designed user interface for web based customer application.",
-                "p4": "Created Responsive Designs (Mobile/Tablet/Desktop) using HTML & CSS, Bootstrap.",
-                "p5": "Used JSON for data exchange between client and server.",
-                "p6": "Used Local Storage to store & retrieve insensitive user data during transition between the different pages.",
-                "p7": "Used JIRA to keep track of bugs to reduce downtime, increase productivity, and improve communication.",
-                "p8": "Extensively used the repositories like GIT and SVN.",
-                "p9": "Experience working with Single Page Application using Angular."
+            {
+                "companyName": "Futech Internet Pvt. Ltd. (z1 media)",
+                "rolResp": "Gurgaon, Haryana, India",
+                "expRange": "07/2020 - 08/2021",
+                "Role": "Jr. Front-end Developer",
+                "projects": [
+                    {
+                        "projName": "Web Development (Achievements/Tasks)",
+                        "points": [
+                            "Monitoring website performance and rectifying front-end-related issues.",
+                            "Developed new website pages using HTML, CSS, Bootstrap, and JavaScript.",
+                            "Improved the entire website to be fully responsive and optimized for performance and SEO.",
+                            "Implemented advanced admin dashboard filters handling large-scale data through API integration.",
+                            "Designed UI modules to represent large datasets using interactive graphs and data tables.",
+                            "Built dynamic dashboard pages using HTML, CSS, Bootstrap, and jQuery.",
+                            "Contributed to improving website performance and user experience."
+                        ]
+                    }
+                ]
             },
-            "proj2": {
-                "projName": "ePub Project",
-                "p1": "Converted design files PDF into eBooks Created reflowable and fixed-layout ePub 2/3.",
-                "p2": "Develop resuable code for the static eBooks.",
-                "p3": "Develop eBooks responsive.",
-                "p4": "eBooks all pages, tags, class, ID, etc follow W3 standards.",
-                "p5": "Fixed bugs after convert PDF to ePub file, that is related to HTML, CSS, JavaScript.",
-                "p6": "Used JIRA to keep track of bugs to reduce downtime, increase productivity, and improve communication.",
-                "p7": "Extensively used the repositories like SVN."
+            {
+                "companyName": "NIIT Limited",
+                "rolResp": "Gurgaon, Haryana, India",
+                "expRange": "04/2019 - 05/2020",
+                "Role": "HTML Developer",
+                "projects": [
+                    {
+                        "projName": "Angular Project (Achievements/Tasks)",
+                        "points": [
+                            "Designed the web pages by using HTML, XHTML, and CSS and deploy the script using with JavaScript.",
+                            "Designed and developed static web pages using HTML and CSS.",
+                            "Converted design mockups into responsive layouts.",
+                            "Ensured cross-browser compatibility and UI consistency.",
+                            "Followed W3C standards for clean and maintainable front-end code."
+                        ]
+                    }
+                ]
             },
-            "proj3": {
-                "projName": "QTI Project",
-                "p1": "Extract the question XML form question XML file with specific id.",
-                "p2": "Map all question with Learnosity.com.",
-                "p3": "Check all question content and answer.",
-                "p4": "Fixed 40+ question XML tamplate bugs.",
-                "p5": "Used JIRA to keep track of bugs to reduce downtime, increase productivity, and improve communication.",
-                "p6": "Extensively used the repositories like SVN."
+            {
+                "companyName": "Oodles Tech Pvt. Ltd.",
+                "rolResp": "Gurgaon, Haryana, India",
+                "expRange": "03/2018 - 07/2018",
+                "Role": "Asst. Consult. Front End Dev.",
+                "projects": [
+                    {
+                        "projName": "Angular Project (Achievements/Tasks)",
+                        "points": [
+                            "Implemented user interface guidelines and standards throughout the development and maintenance of the website using JavaScript, JQuery, CSS and HTML.",
+                            "Developed responsive UI pages from PSD designs using HTML, CSS, and Bootstrap.",
+                            "Worked on UI implementation in web applications and integrated APIs for dynamic data.",
+                            "Maintained reusable front-end components and ensured UI consistency across projects."
+                        ]
+                    }
+                ]
             }
-        },
-        "experience3": {
-            "companyName": "Oodles Tech. Pvt. Ltd.",
-            "rolResp": "Role and Responsibility",
-            "expRange": "04/2018 - 07-2018",
-            "Role": "Assistant Consultant Front End Developer",
-            "proj1": {
-                "projName": "Angular Project",
-                "p1": "Around 4 months of experience in developing User Interfaces for Mobile/Tablet/Desktop using HTML, CSS, JavaScript, bootstrap.",
-                "p2": "Implemented user interface guidelines and standards throughout the development and maintenance of the website using JavaScript, JQuery, CSS and HTML.",
-                "p3": "PSD to responsive designs (Mobile/Tablet/Desktop) using HTML & CSS, Bootstrap.",
-                "p4": "Experience integrating RESTful services (API’s). Used JSON for data transfer between front-end and back-end.",
-                "p5": "Used Local Storage to store & retrieve insensitive user data during transition between the different pages.",
-                "p6": "Used JIRA to keep track of bugs to reduce downtime, increase productivity, and improve communication.",
-                "p7": "Extensively used the repositories like GIT and SVN.",
-                "p8": "Experience working with Single Page Application using Angular."
-            }
-        }
+        ]
     }
 }

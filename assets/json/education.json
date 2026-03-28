@@ -1,6 +1,6 @@
 {
     "data" : {
-        "componentName": "education",
+        "componentName": "Education",
         "university": "AKTU Lucknow",
         "college": "REC Bijnor",
         "recURL": "http://recb.ac.in/",
@@ -8,7 +8,7 @@
         "branch": "Information Technology",
         "schoolName":"HIC Chandpur",
         "hicURL": "https://upmsp.edu.in",
-        "board":"UP Board Lucknow",
+        "board":"U.P. Board Allahabad",
         "heighSchool":"High School",
         "intermediate":"Intermediate",
         "xml":"xml",
