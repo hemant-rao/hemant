@@ -2,6 +2,10 @@
     "data" : {
     "componentName": "ABOUT",
     "heading": "I thrive on transforming complex challenges into elegant simplicity. When I’m not architecting code or refining pixels, you’ll find me exploring the art of cooking.",
+    "intro": "I’m a front-end developer based in Gurgaon, currently a Senior Engineer at Evalueserve, where I build enterprise dashboards in Vue that stay quick under large, high-frequency datasets. Across {experience} I’ve worked the whole front-end stack — HTML, CSS, JavaScript, Angular and Vue — mostly on internal tools and data-heavy interfaces, the kind that have to keep working on a slow connection and a small screen as well as they do in a demo.",
+    "role": "Senior Engineer, Evalueserve",
+    "location": "Gurgaon, Haryana, India",
+    "focus": "Front-end — Vue, Angular, TypeScript",
     "content1": "I don’t just define myself by past achievements, but by the impact I aim to create next. While skills are learned, a resilient personality is built. I am committed to a path of lifelong growth, constantly challenging myself to build things that matter.",
     "content2": "My natural energy drives a deep interest in diverse hobbies, from fine arts to evolving tech. Being a fast learner allows me to adapt quickly across multifaceted roles. I strive to merge multi-disciplinary expertise throughout my career, ensuring every project I lead is both functional and inspired.",
     "heading2": "I’m always open to meaningful conversations and new creative collaborations.",
