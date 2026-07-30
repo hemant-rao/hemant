@@ -1,9 +1,24 @@
 {
   "data": {
     "componentName": "projects",
+    "categories": [
+      {
+        "key": "office",
+        "title": "Office"
+      },
+      {
+        "key": "personal",
+        "title": "Personal"
+      },
+      {
+        "key": "npm",
+        "title": "NPM"
+      }
+    ],
     "data": [
       {
         "proj_name": "VDO.ai",
+        "category": "office",
         "images": "../../assets/vdo-ai.png",
         "title_head": "Redefining Consumer Experiences",
         "title": "Next Generation Video Solutions for Publishers",
@@ -14,51 +29,8 @@
         "bg_image": "../../assets/vdo-ai.png"
       },
       {
-        "proj_name": "Odio Book",
-        "images": "../../assets/dneno.png",
-        "title_head": "Odio Book",
-        "title": "Odio Book",
-        "subTitle": "Free Online Video Editor",
-        "organization_name": "https://odiobook.com",
-        "favicon": "../../assets/dneno-favicon.ico",
-        "link": "https://odiobook.com",
-        "bg_image": "../../assets/dneno.png"
-      },
-      {
-        "proj_name": "Daily Food Serve",
-        "images": "../../assets/dailyfoodserve.png",
-        "title_head": "Daily Food Serve",
-        "title": "Daily Food Serve",
-        "subTitle": "365-Day Healthy Indian Meal Plan",
-        "organization_name": "hemantrao.in",
-        "favicon": "../../assets/dailyfoodserve-favicon.png",
-        "link": "https://dailyfoodserve.com/",
-        "bg_image": "../../assets/dailyfoodserve.png"
-      },
-      {
-        "proj_name": "NPM Packages",
-        "images": "../../assets/npm-packages.png",
-        "title_head": "NPM Packages by Hemant Rao",
-        "title": "NPM Packages by Hemant Rao",
-        "subTitle": "Collection of Utility & UI Component Packages",
-        "organization_name": "https://www.npmjs.com/~mrhrao",
-        "favicon": "../../assets/npm-favicon.png",
-        "link": "https://www.npmjs.com/~mrhrao",
-        "bg_image": "../../assets/npm-packages.png"
-      },
-      {
-        "proj_name": "Sahastrabahu",
-        "images": "../../assets/sahastrabahu.jpg",
-        "title_head": "Sahastrabahu",
-        "title": "Sahastrabahu",
-        "subTitle": "Bridging Worlds Through Language",
-        "organization_name": "hemantrao.in",
-        "favicon": "../../assets/sahastrabahu-favicon.png",
-        "link": "https://sahastrabahu.dailyfoodserve.com/",
-        "bg_image": "../../assets/sahastrabahu.png"
-      },
-      {
         "proj_name": "Atlas5.co",
+        "category": "office",
         "images": "../../assets/atlas5.jpg",
         "title_head": "Atlas5 AI for Publishers",
         "title": "Atlas5 AI For Publishers",
@@ -70,6 +42,7 @@
       },
       {
         "proj_name": "Innovads",
+        "category": "office",
         "images": "../../assets/innovads.png",
         "title_head": "Innovative Ad Optimization...",
         "title": "Innovative Ad Optimization Platform For Web Publishers",
@@ -80,7 +53,44 @@
         "bg_image": "../../assets/innovads.png"
       },
       {
+        "proj_name": "Odio Book",
+        "category": "personal",
+        "images": "../../assets/dneno.png",
+        "title_head": "Odio Book",
+        "title": "Odio Book",
+        "subTitle": "Free Online Video Editor",
+        "organization_name": "https://odiobook.com",
+        "favicon": "../../assets/dneno-favicon.ico",
+        "link": "https://odiobook.com",
+        "bg_image": "../../assets/dneno.png"
+      },
+      {
+        "proj_name": "Daily Food Serve",
+        "category": "personal",
+        "images": "../../assets/dailyfoodserve.png",
+        "title_head": "Daily Food Serve",
+        "title": "Daily Food Serve",
+        "subTitle": "365-Day Healthy Indian Meal Plan",
+        "organization_name": "hemantrao.in",
+        "favicon": "../../assets/dailyfoodserve-favicon.png",
+        "link": "https://dailyfoodserve.com/",
+        "bg_image": "../../assets/dailyfoodserve.png"
+      },
+      {
+        "proj_name": "Sahastrabahu",
+        "category": "personal",
+        "images": "../../assets/sahastrabahu.jpg",
+        "title_head": "Sahastrabahu",
+        "title": "Sahastrabahu",
+        "subTitle": "Bridging Worlds Through Language",
+        "organization_name": "hemantrao.in",
+        "favicon": "../../assets/sahastrabahu-favicon.png",
+        "link": "https://sahastrabahu.dailyfoodserve.com/",
+        "bg_image": "../../assets/sahastrabahu.png"
+      },
+      {
         "proj_name": "Hemant Rao",
+        "category": "personal",
         "images": "../../assets/vdo.ai.jpg",
         "title_head": "Hemant Rao - Front-End Developer",
         "title": "Hemant Rao - Front-End Developer",
@@ -89,6 +99,18 @@
         "favicon": "../../assets/dev.png",
         "link": "https://hemantrao.in/#/skills/",
         "bg_image": "../../assets/hemant-rao.png"
+      },
+      {
+        "proj_name": "NPM Packages",
+        "category": "npm",
+        "images": "../../assets/npm-packages.png",
+        "title_head": "NPM Packages by Hemant Rao",
+        "title": "NPM Packages by Hemant Rao",
+        "subTitle": "Collection of Utility & UI Component Packages",
+        "organization_name": "https://www.npmjs.com/~mrhrao",
+        "favicon": "../../assets/npm-favicon.png",
+        "link": "https://www.npmjs.com/~mrhrao",
+        "bg_image": "../../assets/npm-packages.png"
       }
     ]
   }
