@@ -4,15 +4,18 @@
     "categories": [
       {
         "key": "office",
-        "title": "Office"
+        "title": "Office",
+        "note": "Products I have built at work, for the companies I have worked with."
       },
       {
         "key": "personal",
-        "title": "Personal"
+        "title": "Personal",
+        "note": "Side projects I design, build and run on my own, outside of work."
       },
       {
         "key": "npm",
-        "title": "NPM"
+        "title": "NPM",
+        "note": "Open-source packages I publish for other developers to use."
       }
     ],
     "data": [
