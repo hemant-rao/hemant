@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en" data-beasties-container><head>
+    <meta charset="utf-8">
+    <base href="/">
+    <!--
+      initial-scale=1 is not optional. Without it a phone lays the page out at
+      the ~980px desktop width and then zooms out, so every media query below
+      matches the wrong breakpoint and Google's mobile-friendly test fails the
+      site outright.
+    -->
+    <!-- viewport-fit=cover is what makes env(safe-area-inset-*) non-zero on
+    phones with a notch or gesture strip — without it the sidebar's footer
+    padding for that strip computes to 0. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#008073">
+
+    <!-- ================= Primary meta =================
+      One <title> only. There used to be two, and a crawler keeps whichever it
+      likes — which is how the tab and the search result came to disagree.
+      Per-route title/description/canonical are then rewritten at runtime by
+      SeoService; the values here are the home page's, and the fallback for any
+      client that never runs the script.
+    -->
+    <title>Vue portfolio · Hemant Rao | Front-End Developer</title>
+    <meta name="description" content="A fresh look at the same story — Hemant Rao’s work rebuilt in Vue 3 (Options API), running in this same build.">
+    <meta name="author" content="Hemant Rao">
+    <link rel="canonical" href="https://hemantrao.in/vue">
+
+    <!-- ================= Open Graph / Facebook ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Hemant Rao">
+    <meta property="og:url" content="https://hemantrao.in/vue">
+    <meta property="og:title" content="Vue portfolio · Hemant Rao | Front-End Developer">
+    <meta property="og:description" content="A fresh look at the same story — Hemant Rao’s work rebuilt in Vue 3 (Options API), running in this same build.">
+    <meta property="og:image" content="https://hemantrao.in/assets/hemant-rao.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="300">
+    <meta property="og:image:alt" content="Hemant Rao, front-end developer">
+
+    <!-- ================= Twitter =================
+      name=, not property=. Twitter's parser reads the name attribute; the
+      property spelling is Open Graph's and was being ignored, which is why the
+      card fell back to whatever OG happened to say.
+      summary (not summary_large_image) matches the 400x300 portrait actually
+      linked above — a large-image card crops a portrait badly.
+    -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Vue portfolio · Hemant Rao | Front-End Developer">
+    <meta name="twitter:description" content="A fresh look at the same story — Hemant Rao’s work rebuilt in Vue 3 (Options API), running in this same build.">
+    <meta name="twitter:image" content="https://hemantrao.in/assets/hemant-rao.png">
+    <meta name="twitter:image:alt" content="Hemant Rao, front-end developer">
+
+    <link rel="shortcut icon" href="assets/dev.png">
+    <link rel="icon" type="image/png" href="assets/dev.png">
+
+    <!--
+      Both font hosts are cross-origin and are discovered late (the @import for
+      Inter sits inside the stylesheet). Opening the connections here overlaps
+      the DNS/TLS handshake with the rest of the head instead of paying for it
+      after the CSS has already parsed.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!--
+      Structured data, so a search for the name returns a person rather than a
+      page. This is deliberately static rather than injected by Angular: Google
+      does render JavaScript, but it does so on a second pass that can lag the
+      first by days, and a knowledge-panel entity is exactly the thing worth
+      having in the first pass. It describes the site as a whole, so it is the
+      same on every route and does not need to change with navigation.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hemant Rao",
+        "url": "https://hemantrao.in/",
+        "image": "https://hemantrao.in/assets/hemant-rao.png",
+        "jobTitle": "Front-End Developer",
+        "description": "Front-end developer building fast, accessible interfaces in Vue, Angular and TypeScript, with a focus on data-heavy enterprise dashboards.",
+        "email": "mailto:hello@hemantrao.in",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gurgaon",
+          "addressRegion": "Haryana",
+          "addressCountry": "IN"
+        },
+        "knowsAbout": [
+          "Vue.js",
+          "Angular",
+          "TypeScript",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Web accessibility",
+          "Front-end performance"
+        ],
+        "sameAs": [
+          "https://in.linkedin.com/in/hemant--rao",
+          "https://github.com/hemant-rao"
+        ]
+      }
+    </script>
+
+    <!--
+      The built stylesheet is loaded non-render-blocking (media="print", then
+      swapped to "all" on load), so for the first frame after a hard reload
+      nothing has yet told the browser that a *closed* Bootstrap modal is
+      hidden — and the profile photo inside it painted full-screen before
+      vanishing. This has to live inline in the document head to apply on that
+      first frame; a rule in styles.css arrives with the very stylesheet that
+      is late. Opening the modal still works: Bootstrap sets an inline
+      display:block, which outranks this.
+    -->
+    <style>
+      .modal {
+        display: none;
+      }
+    </style>
+
+    <!--
+      Theme has to be resolved before the first paint, not in ngOnInit. Angular
+      boots after the document has already painted once, so setting the
+      attribute there means a dark-theme visitor gets a full white frame first —
+      the flash every themed site is judged by.
+
+      Deliberately inline and synchronous in <head>: an external file, defer, or
+      async would all land after that first paint and defeat the point. The
+      stored value is validated rather than trusted, so a hand-edited
+      localStorage entry cannot inject an arbitrary attribute value.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored === "dark" || stored === "light"
+              ? stored
+              : window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          /* Private mode can throw on localStorage access. Light is the
+             documented default, and the attribute simply stays unset. */
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  <style>:root{--blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}main{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;text-align:left;background-color:#fff}[tabindex="-1"]:focus:not(:focus-visible){outline:0!important}a{color:#007bff;text-decoration:none;background-color:transparent}a:hover{color:#0056b3;text-decoration:underline}a:not([href]){color:inherit;text-decoration:none}a:not([href]):hover{color:inherit;text-decoration:none}img{vertical-align:middle;border-style:none}button{border-radius:0}button:focus{outline:1px dotted;outline:5px auto -webkit-focus-ring-color}button{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button{overflow:visible}button{text-transform:none}[type=button],button{-webkit-appearance:button}[type=button]:not(:disabled),button:not(:disabled){cursor:pointer}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}.fade{transition:opacity .15s linear}@media(prefers-reduced-motion:reduce){.fade{transition:none}}.fade:not(.show){opacity:0}@-webkit-keyframes progress-bar-stripes{0%{background-position:1rem 0}to{background-position:0 0}}.close{float:right;font-size:1.5rem;font-weight:700;line-height:1;color:#000;text-shadow:0 1px 0 #fff;opacity:.5}.close:hover{color:#000;text-decoration:none}.close:not(:disabled):not(.disabled):focus,.close:not(:disabled):not(.disabled):hover{opacity:.75}button.close{padding:0;background-color:transparent;border:0}.modal{position:fixed;top:0;left:0;z-index:1050;display:none;width:100%;height:100%;overflow:hidden;outline:0}.modal-dialog{position:relative;width:auto;margin:.5rem;pointer-events:none}.modal.fade .modal-dialog{transition:-webkit-transform .3s ease-out;transition:transform .3s ease-out;transition:transform .3s ease-out,-webkit-transform .3s ease-out;-webkit-transform:translate(0,-50px);transform:translateY(-50px)}@media(prefers-reduced-motion:reduce){.modal.fade .modal-dialog{transition:none}}.modal-dialog-centered{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;min-height:calc(100% - 1rem)}.modal-dialog-centered:before{display:block;height:calc(100vh - 1rem);height:-webkit-min-content;height:-moz-min-content;height:min-content;content:""}.modal-content{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;width:100%;pointer-events:auto;background-color:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,.2);border-radius:.3rem;outline:0}.modal-header{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:justify;justify-content:space-between;padding:1rem;border-bottom:1px solid #dee2e6;border-top-left-radius:calc(.3rem - 1px);border-top-right-radius:calc(.3rem - 1px)}.modal-header .close{padding:1rem;margin:-1rem -1rem -1rem auto}@media(min-width:576px){.modal-dialog{max-width:500px;margin:1.75rem auto}.modal-dialog-centered{min-height:calc(100% - 3.5rem)}.modal-dialog-centered:before{height:calc(100vh - 3.5rem);height:-webkit-min-content;height:-moz-min-content;height:min-content}}@-webkit-keyframes spinner-border{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes spinner-grow{0%{-webkit-transform:scale(0);transform:scale(0)}50%{opacity:1;-webkit-transform:none;transform:none}}@media print{*,:after,:before{text-shadow:none!important;box-shadow:none!important}a:not(.btn){text-decoration:underline}img{page-break-inside:avoid}@page{size:a3}body{min-width:992px!important}}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--bg: #eef3f3;--surface: #ffffff;--surface-2: #f6faf9;--surface-3: #eef4f3;--border: #dfebe9;--border-strong: #c9dbd8;--ink: #0f1f1d;--ink-2: #3d514e;--muted: #6d817e;--faint: #9aaba8;--accent: #008073;--accent-hover: #00655b;--accent-ink: #00655b;--accent-contrast: #ffffff;--accent-soft: rgba(0, 128, 115, .1);--accent-softer: rgba(0, 128, 115, .05);--accent-ring: rgba(0, 128, 115, .35);--btn-fill-bg: var(--accent);--btn-fill-bg-hover: var(--accent-hover);--btn-fill-ink: var(--accent-contrast);--btn-fill-border: transparent;--btn-quiet-bg: transparent;--btn-quiet-bg-hover: var(--accent-soft);--btn-quiet-ink: var(--accent-ink);--btn-quiet-border: var(--accent);--band: var(--accent);--band-ink: var(--accent-contrast);--danger: #c0392b;--danger-soft: rgba(192, 57, 43, .1);--link: #0a66c2;--shadow-1: 0 1px 2px rgba(15, 31, 29, .06), 0 1px 3px rgba(15, 31, 29, .04);--shadow-2: 0 2px 4px rgba(15, 31, 29, .06), 0 6px 16px rgba(15, 31, 29, .08);--shadow-3: 0 8px 16px rgba(15, 31, 29, .08), 0 18px 40px rgba(15, 31, 29, .12);--canvas: url("./media/bg-HDTH7E5Y.png") repeat, var(--bg);--font-display: Raleway, "Inter", "Barlow", sans-serif;--font-body: "Inter", "Barlow", sans-serif;--fs-100: .7rem;--fs-200: .78rem;--fs-300: .86rem;--fs-400: .94rem;--fs-500: clamp(.95rem, .89rem + .28vw, 1.06rem);--fs-600: clamp(1.02rem, .95rem + .32vw, 1.16rem);--fs-700: clamp(1.08rem, 1rem + .42vw, 1.28rem);--fs-800: clamp(1.2rem, 1.08rem + .6vw, 1.5rem);--fs-900: clamp(1.35rem, 1.16rem + .85vw, 1.8rem);--fs-1000: clamp(1.7rem, 1.3rem + 1.8vw, 2.6rem);--fw-normal: 400;--fw-medium: 500;--fw-semi: 600;--fw-bold: 700;--track-tight: -.015em;--track-label: .08em;--lh-tight: 1.22;--lh-snug: 1.4;--lh-body: 1.65;--ease-out: cubic-bezier(.4, 0, .2, 1);--ease-spring: cubic-bezier(.22, 1, .36, 1);--dur-1: .14s;--dur-2: .24s;--dur-3: .38s;--radius-1: 8px;--radius-2: 12px;--radius-3: 18px;color-scheme:light}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}body{height:100%;overflow:hidden;-webkit-font-smoothing:antialiased;color:var(--ink);background-color:var(--bg);margin:0!important;padding:0!important;-webkit-text-size-adjust:100%;text-size-adjust:100%}html{margin-top:0!important;padding-top:0!important;background-color:var(--bg)}html,body{font-family:var(--font-body)}*{margin:0;padding:0;color:var(--ink-2)}a{color:var(--ink-2);transition:color var(--dur-1) var(--ease-out)}a:hover{color:var(--accent-ink)}button span{color:inherit}body .dashboard{background:var(--canvas)}.set-rout-ele>*:not(router-outlet),.set-rout-ele>*:not(router-outlet)>div:only-child{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}*{scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}.skip-link{position:absolute;top:0;left:0;z-index:1200;padding:10px 18px;font-size:.9rem;font-weight:600;color:var(--accent-contrast)!important;background-color:var(--accent);border-bottom-right-radius:var(--radius-2);text-decoration:none;transform:translateY(-120%);transition:transform var(--dur-2) var(--ease-spring)}.skip-link:focus-visible{transform:none;outline-offset:-3px}.dashboard:focus{outline:none}
+</style><link rel="stylesheet" href="styles-4VCOL5NZ.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-4VCOL5NZ.css"></noscript><style ng-app-id="ng">@property --rail{syntax: "<length>"; inherits: true; initial-value: 264px;}.app-shell[_ngcontent-ng-c490872819]{--rail: 264px;--bar-h: 88px;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;display:flex;overflow:hidden;font-size:.8rem;background:var(--bg);transition:--rail var(--dur-3) var(--ease-spring)}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]{--rail: 76px}.app-shell.landing.mobile[_ngcontent-ng-c490872819]{padding-left:0}.container-width[_ngcontent-ng-c490872819]{max-width:100%;margin:0 auto}.remove-pad-marg.h3[_ngcontent-ng-c490872819], .remove-pad-marg.h6[_ngcontent-ng-c490872819]{padding:2px!important;margin:0!important}.side-nav[_ngcontent-ng-c490872819]{flex:0 0 var(--rail);width:var(--rail);height:100vh;height:100dvh;display:flex;flex-direction:column;background-color:var(--surface);border-right:1px solid var(--border);z-index:1035;contain:layout paint}.side-brand[_ngcontent-ng-c490872819]{display:flex;align-items:center;gap:12px;min-height:var(--bar-h);padding:16px;border-bottom:1px solid var(--border);overflow:hidden;transition:padding var(--dur-3) var(--ease-spring),gap var(--dur-3) var(--ease-spring)}.image-icon[_ngcontent-ng-c490872819]{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--accent-soft);transition:box-shadow var(--dur-2) var(--ease-out)}.profile-trigger[_ngcontent-ng-c490872819]{padding:0;border:0;background:none;cursor:pointer;line-height:0;flex:0 0 auto}.profile-trigger[_ngcontent-ng-c490872819]:hover   .image-icon[_ngcontent-ng-c490872819]{box-shadow:0 0 0 2px var(--surface),0 0 0 5px var(--accent-ring)}.profile-trigger[_ngcontent-ng-c490872819]:focus{outline:none}.profile-trigger[_ngcontent-ng-c490872819]:focus-visible   .image-icon[_ngcontent-ng-c490872819]{outline:2px solid var(--accent);outline-offset:3px}.brand-text[_ngcontent-ng-c490872819]{display:flex;flex-direction:column;justify-content:center;min-width:0;overflow:hidden;white-space:nowrap;text-decoration:none;transition:opacity var(--dur-2) var(--ease-out) .12s,transform var(--dur-2) var(--ease-spring) .12s}.brand-text[_ngcontent-ng-c490872819]:hover{text-decoration:none}.name-size[_ngcontent-ng-c490872819]{font-size:var(--fs-500);font-weight:var(--fw-semi);letter-spacing:var(--track-tight);line-height:1.3;color:var(--ink);transition:color var(--dur-1) var(--ease-out)}.brand-text[_ngcontent-ng-c490872819]:hover   .name-size[_ngcontent-ng-c490872819]{color:var(--accent-ink)}.list-2[_ngcontent-ng-c490872819]{font-size:var(--fs-200);letter-spacing:.01em;line-height:1.3;color:var(--muted)}.nav-hor[_ngcontent-ng-c490872819]{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:10px 0}.nav-hor[_ngcontent-ng-c490872819]   ul[_ngcontent-ng-c490872819]{width:100%;list-style:none}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]{position:relative;margin:2px 10px;border-radius:var(--radius-1);overflow:hidden;transition:background-color var(--dur-2) var(--ease-out)}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:before{content:"";position:absolute;left:0;top:50%;width:3px;height:24px;margin-top:-12px;border-radius:0 3px 3px 0;background-color:var(--accent);transform:scaleY(0);transition:transform var(--dur-2) var(--ease-spring)}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:hover:before{transform:scaleY(.55)}.nav-hor[_ngcontent-ng-c490872819]   li.active-link[_ngcontent-ng-c490872819]:before{transform:scaleY(1)}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]   a[_ngcontent-ng-c490872819]{width:100%;color:var(--muted)!important;padding:.68rem .75rem;display:flex;align-items:center;text-decoration:none;border-radius:var(--radius-1);transition:color var(--dur-2) var(--ease-out)}.nav-hor[_ngcontent-ng-c490872819]   li.active-link[_ngcontent-ng-c490872819]{background-color:var(--accent-soft);font-weight:600}.nav-hor[_ngcontent-ng-c490872819]   li.active-link[_ngcontent-ng-c490872819]   a[_ngcontent-ng-c490872819], .nav-hor[_ngcontent-ng-c490872819]   li.active-link[_ngcontent-ng-c490872819]   .set-icon[_ngcontent-ng-c490872819]{color:var(--accent-ink)!important}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:hover{background-color:var(--surface-2)}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:hover   a[_ngcontent-ng-c490872819], .nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:hover   .set-icon[_ngcontent-ng-c490872819]{color:var(--accent-ink)!important}.set-icon[_ngcontent-ng-c490872819]{display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem;width:32px;height:32px;flex:0 0 32px;transition:color var(--dur-2) var(--ease-out)}.titleName[_ngcontent-ng-c490872819]{font-size:var(--fs-400);font-weight:var(--fw-medium);margin-left:10px;white-space:nowrap;transition:opacity var(--dur-2) var(--ease-out),transform var(--dur-2) var(--ease-spring)}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:nth-child(1)   .titleName[_ngcontent-ng-c490872819]{transition-delay:.1s}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:nth-child(2)   .titleName[_ngcontent-ng-c490872819]{transition-delay:.14s}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:nth-child(3)   .titleName[_ngcontent-ng-c490872819]{transition-delay:.18s}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:nth-child(4)   .titleName[_ngcontent-ng-c490872819]{transition-delay:.22s}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:nth-child(5)   .titleName[_ngcontent-ng-c490872819]{transition-delay:.26s}.nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]:nth-child(6)   .titleName[_ngcontent-ng-c490872819]{transition-delay:.3s}.side-foot[_ngcontent-ng-c490872819]{flex:0 0 auto;display:flex;align-items:stretch;gap:6px;padding:10px;border-top:1px solid var(--border)}.foot-btn[_ngcontent-ng-c490872819]{display:flex;align-items:center;justify-content:center;gap:8px;padding:.6rem;border:0;border-radius:var(--radius-1);background-color:transparent;color:var(--muted);cursor:pointer;transition:background-color var(--dur-2) var(--ease-out),color var(--dur-2) var(--ease-out)}.foot-btn[_ngcontent-ng-c490872819]:hover{background-color:var(--surface-2);color:var(--accent-ink)}.foot-btn[_ngcontent-ng-c490872819]:focus{outline:none}.foot-btn[_ngcontent-ng-c490872819]:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}.theme-toggle[_ngcontent-ng-c490872819]{flex:1 1 auto;min-width:0}.side-toggle[_ngcontent-ng-c490872819]{flex:0 0 auto}.foot-label[_ngcontent-ng-c490872819]{font-size:var(--fs-300);font-weight:var(--fw-medium);white-space:nowrap;transition:opacity var(--dur-2) var(--ease-out) .14s,transform var(--dur-2) var(--ease-spring) .14s}.toggle-icon[_ngcontent-ng-c490872819]{width:20px;height:20px;display:block;flex:0 0 20px;transition:transform var(--dur-3) var(--ease-spring)}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .toggle-icon[_ngcontent-ng-c490872819]{transform:rotateY(180deg)}.theme-icon[_ngcontent-ng-c490872819]{width:20px;height:20px;display:block;flex:0 0 20px;color:currentColor}.theme-core[_ngcontent-ng-c490872819], .theme-rays[_ngcontent-ng-c490872819], .theme-bite[_ngcontent-ng-c490872819]{transform-box:fill-box;transform-origin:center}.theme-core[_ngcontent-ng-c490872819]{transition:transform var(--dur-3) var(--ease-spring)}.theme-bite[_ngcontent-ng-c490872819]{transform:translate(6px,-6px);transition:transform var(--dur-3) var(--ease-spring)}.theme-rays[_ngcontent-ng-c490872819]{transition:transform var(--dur-3) var(--ease-spring),opacity var(--dur-2) var(--ease-out)}[data-theme="dark"][_nghost-ng-c490872819]   .theme-rays[_ngcontent-ng-c490872819], [data-theme="dark"]   [_nghost-ng-c490872819]   .theme-rays[_ngcontent-ng-c490872819]{transform:rotate(-45deg) scale(.4);opacity:0}[data-theme="dark"][_nghost-ng-c490872819]   .theme-bite[_ngcontent-ng-c490872819], [data-theme="dark"]   [_nghost-ng-c490872819]   .theme-bite[_ngcontent-ng-c490872819]{transform:translate(0)}[data-theme="dark"][_nghost-ng-c490872819]   .theme-core[_ngcontent-ng-c490872819], [data-theme="dark"]   [_nghost-ng-c490872819]   .theme-core[_ngcontent-ng-c490872819]{transform:scale(1.25)}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .titleName[_ngcontent-ng-c490872819], .app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .brand-text[_ngcontent-ng-c490872819], .app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .foot-label[_ngcontent-ng-c490872819]{opacity:0;transform:translate(-8px);pointer-events:none;transition:opacity var(--dur-1) var(--ease-out),transform var(--dur-1) var(--ease-out);transition-delay:0s}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .brand-text[_ngcontent-ng-c490872819], .app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .foot-label[_ngcontent-ng-c490872819]{position:absolute;visibility:hidden;transition:opacity var(--dur-1) var(--ease-out),transform var(--dur-1) var(--ease-out),visibility 0s linear var(--dur-1)}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .titleName[_ngcontent-ng-c490872819]{width:0;margin-left:0;overflow:hidden}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .side-brand[_ngcontent-ng-c490872819]{justify-content:center;padding-left:0;padding-right:0;gap:0}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .nav-hor[_ngcontent-ng-c490872819]   li[_ngcontent-ng-c490872819]   a[_ngcontent-ng-c490872819]{justify-content:center;padding-left:0;padding-right:0}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .side-foot[_ngcontent-ng-c490872819]{flex-direction:column;align-items:stretch}.app-shell.rail-collapsed[_ngcontent-ng-c490872819]   .theme-toggle[_ngcontent-ng-c490872819]{flex:0 0 auto}.dashboard[_ngcontent-ng-c490872819]{position:relative;flex:1 1 auto;min-width:0;height:100vh;height:100dvh;overflow:hidden}.set-rout-ele[_ngcontent-ng-c490872819]{display:flex;flex-direction:column;height:100%;min-height:0}@media only screen and (max-width:767.98px){.side-nav[_ngcontent-ng-c490872819]{position:fixed;top:0;left:0;bottom:0;height:auto;width:min(300px,82vw);flex-basis:min(300px,82vw);transform:translate(-100%);transition:transform var(--dur-2) var(--ease-out);box-shadow:none}.side-nav.overlay-open[_ngcontent-ng-c490872819]{transform:none;transition:transform var(--dur-3) var(--ease-spring);box-shadow:var(--shadow-3)}.side-foot[_ngcontent-ng-c490872819]{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}}.mbar-brand[_ngcontent-ng-c490872819]{position:absolute;top:0;left:12px;z-index:5;height:var(--bar-h);display:inline-flex;align-items:center;border-radius:50%}.mbar-brand[_ngcontent-ng-c490872819]   img[_ngcontent-ng-c490872819]{width:34px;height:34px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #ffffff8c}.menu-btn[_ngcontent-ng-c490872819]{position:absolute;top:0;right:10px;z-index:5;width:42px;height:var(--bar-h);display:inline-flex;align-items:center;justify-content:center;padding:0;color:var(--band-ink);background-color:transparent;border:0;border-radius:var(--radius-1);cursor:pointer;transition:background-color var(--dur-1) var(--ease-out)}.menu-btn[_ngcontent-ng-c490872819]:hover, .menu-btn[_ngcontent-ng-c490872819]:active{background-color:#ffffff24}.menu-btn__bars[_ngcontent-ng-c490872819]{position:relative;display:block;width:20px;height:14px}.menu-btn__bars[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background-color:currentColor;transition:transform var(--dur-2) var(--ease-spring),opacity var(--dur-1) var(--ease-out)}.menu-btn__bars[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]:nth-child(1){top:0}.menu-btn__bars[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]:nth-child(2){top:6px}.menu-btn__bars[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]:nth-child(3){top:12px}.menu-btn__bars.is-open[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]:nth-child(1){transform:translateY(6px) rotate(45deg)}.menu-btn__bars.is-open[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]:nth-child(2){opacity:0}.menu-btn__bars.is-open[_ngcontent-ng-c490872819]   span[_ngcontent-ng-c490872819]:nth-child(3){transform:translateY(-6px) rotate(-45deg)}.side-backdrop[_ngcontent-ng-c490872819]{position:fixed;inset:0;background-color:#040c0b80;backdrop-filter:blur(2px);z-index:1030;opacity:0;pointer-events:none;transition:opacity var(--dur-2) var(--ease-out)}.side-backdrop.is-open[_ngcontent-ng-c490872819]{opacity:1;pointer-events:auto}@media only screen and (max-width:767.98px){.app-shell[_ngcontent-ng-c490872819]{--bar-h: 58px}.name-size[_ngcontent-ng-c490872819]{font-size:var(--fs-400)}}#profileModalCenter[_ngcontent-ng-c490872819]   .full-size[_ngcontent-ng-c490872819]{width:100%;height:auto;display:block;border-radius:var(--radius-2)}#profileModalCenter[_ngcontent-ng-c490872819]   .modal-header[_ngcontent-ng-c490872819]{padding:2px;border-radius:var(--radius-2);background-color:var(--surface);border:0}#profileModalCenter[_ngcontent-ng-c490872819]   .modal-content[_ngcontent-ng-c490872819]{border-radius:var(--radius-2);background-color:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-3)}#profileModalCenter[_ngcontent-ng-c490872819]   button.close[_ngcontent-ng-c490872819]{position:absolute;right:7px;top:0;outline:none;color:var(--ink);text-shadow:none;opacity:.75}#profileModalCenter[_ngcontent-ng-c490872819]   button.close[_ngcontent-ng-c490872819]:hover{opacity:1}</style><style ng-app-id="ng">.ngx-spinner-overlay[_ngcontent-ng-c4290628622]{position:fixed;top:0;left:0;width:100%;height:100%;opacity:1;transition:opacity .3s ease-in}.ngx-spinner-overlay[_ngcontent-ng-c4290628622] > div[_ngcontent-ng-c4290628622]:not(.loading-text){top:50%;left:50%;margin:0;position:absolute;transform:translate(-50%,-50%)}.loading-text[_ngcontent-ng-c4290628622]{position:absolute;top:60%;left:50%;transform:translate(-50%,-60%)}@starting-style{.ngx-spinner-overlay[_ngcontent-ng-c4290628622]{opacity:0}}.fade-out[_ngcontent-ng-c4290628622]{opacity:0;transition:opacity .2s ease-out}.no-animate[_ngcontent-ng-c4290628622]{transition:none!important}@starting-style{.no-animate[_ngcontent-ng-c4290628622]{opacity:1!important;transition:none!important}}</style><style ng-app-id="ng">.vue-app-host[_ngcontent-ng-c2838208413]{min-height:100vh;width:100%}</style></head>
+
+  <body>
+    <app-root ng-version="22.0.8" _nghost-ng-c490872819 ng-server-context="ssg"><ngx-spinner _ngcontent-ng-c490872819 bdcolor="rgba(51,51,51,0.8)" size="medium" type="ball-scale-multiple" _nghost-ng-c4290628622><!----></ngx-spinner><a _ngcontent-ng-c490872819 href="#main-content" class="skip-link">Skip to content</a><div _ngcontent-ng-c490872819 class="app-shell landing"><!----><!----><main _ngcontent-ng-c490872819 id="main-content" tabindex="-1" class="dashboard"><!----><div _ngcontent-ng-c490872819 class="set-rout-ele"><router-outlet _ngcontent-ng-c490872819></router-outlet><app-vue-host _nghost-ng-c2838208413><div _ngcontent-ng-c2838208413 id="vue-app-root" class="vue-app-host"></div></app-vue-host><!----></div></main></div><div _ngcontent-ng-c490872819 id="profileModalCenter" tabindex="-1" role="dialog" aria-labelledby="profileModalCenterTitle" aria-hidden="true" class="modal fade"><div _ngcontent-ng-c490872819 role="document" class="modal-dialog modal-dialog-centered"><div _ngcontent-ng-c490872819 class="modal-content"><div _ngcontent-ng-c490872819 class="modal-header"><img _ngcontent-ng-c490872819 src="assets/hemant-rao.jpeg" alt="hemant rao front-end developer" class="full-size"><button _ngcontent-ng-c490872819 type="button" data-dismiss="modal" aria-label="Close" class="close"><span _ngcontent-ng-c490872819 aria-hidden="true">×</span></button></div></div></div></div></app-root>
+    <!-- <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❄
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❄
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❄
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+    <div class="snowflake">
+      ✰
+    </div>
+  </div> -->
+
+  <script src="polyfills-5FDKUQTZ.js" type="module"></script><script src="scripts-JFS6VIQE.js" defer></script><script src="main-4C5M7QWK.js" type="module"></script>
+
+</body></html>
