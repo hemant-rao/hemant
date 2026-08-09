@@ -73,7 +73,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!--
+      The Inter stylesheet is requested by an @import at the top of styles.css,
+      which the browser cannot see until that 200 kB file has downloaded and
+      parsed. Preloading the identical URL here starts it while the head is
+      still being read; the @import then resolves out of the cache.
+    -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" crossorigin="">
+
+    <!--
+      Icons are decoration: not one of them is needed for the first paint, and
+      every page's content is prerendered and ready to show. Loaded as
+      media="print" the stylesheet stops blocking that paint, then swaps to
+      "all" once it lands — the same treatment Angular's own stylesheet gets.
+      On a slow connection this is the difference between text appearing at once
+      and the page staying blank until a third-party CDN answers.
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
 
     <!--
       Structured data, so a search for the name returns a person rather than a
@@ -267,5 +286,5 @@
     </div>
   </div> -->
 
-  <script src="polyfills-5FDKUQTZ.js" type="module"></script><script src="scripts-JFS6VIQE.js" defer=""></script><script src="main-4QI3JW6Q.js" type="module"></script></body>
+  <script src="polyfills-5FDKUQTZ.js" type="module"></script><script src="scripts-JFS6VIQE.js" defer=""></script><script src="main-KFDRRZE2.js" type="module"></script></body>
 </html>
