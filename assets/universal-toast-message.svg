@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="universal-toast-message preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1219"/>
+      <stop offset="0.6" stop-color="#0d1724"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.12" cy="0.12" r="0.85">
+      <stop offset="0" stop-color="#3fd08a" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#3fd08a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#dots)"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+
+  <!-- code panel -->
+  <rect x="90" y="120" width="540" height="468" rx="18" fill="#0e1822" stroke="#233442" stroke-width="2"/>
+  <path d="M90 138a18 18 0 0 1 18-18h504a18 18 0 0 1 18 18v36H90z" fill="#0b141d"/>
+  <circle cx="124" cy="147" r="6" fill="#ff5f57"/>
+  <circle cx="146" cy="147" r="6" fill="#febc2e"/>
+  <circle cx="168" cy="147" r="6" fill="#28c840"/>
+  <text x="360" y="153" text-anchor="middle" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="16" fill="#7d8b99">toast.js</text>
+
+  <g font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="22">
+    <text x="130" y="234" fill="#c9d6e2">import toast from</text>
+    <text x="130" y="280" fill="#f2c66d">'universal-toast-message'</text>
+    <text x="130" y="360" fill="#c9d6e2">toast.<tspan fill="#7ee0b4">success</tspan><tspan fill="#f2c66d">('Profile saved')</tspan></text>
+    <text x="130" y="410" fill="#c9d6e2">toast.<tspan fill="#7ee0b4">info</tspan><tspan fill="#f2c66d">('3 new updates')</tspan></text>
+    <text x="130" y="460" fill="#c9d6e2">toast.<tspan fill="#7ee0b4">error</tspan><tspan fill="#f2c66d">('Upload failed')</tspan></text>
+  </g>
+  <text x="130" y="536" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="16" fill="#5c6d7a">// one API · vanilla, vue, react, angular</text>
+
+  <!-- toast stack -->
+  <g>
+    <rect x="680" y="150" width="500" height="104" rx="16" fill="#132230" stroke="#2b4352" stroke-width="2"/>
+    <circle cx="730" cy="202" r="26" fill="#10382a"/>
+    <path d="M718 202l8 8 16-17" fill="none" stroke="#3fd08a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="776" y="196" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" fill="#eef7f3">Profile saved</text>
+    <text x="776" y="228" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="17" fill="#8b9dab">toast.success()</text>
+    <text x="1150" y="184" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#5c6d7a">just now</text>
+  </g>
+  <g>
+    <rect x="680" y="282" width="500" height="104" rx="16" fill="#132230" stroke="#2b4352" stroke-width="2"/>
+    <circle cx="730" cy="334" r="26" fill="#12253f"/>
+    <path d="M730 320v18" stroke="#63a9ff" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="730" cy="348" r="2.6" fill="#63a9ff"/>
+    <text x="776" y="328" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" fill="#eef7f3">3 new updates</text>
+    <text x="776" y="360" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="17" fill="#8b9dab">toast.info()</text>
+    <text x="1150" y="316" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#5c6d7a">2m</text>
+  </g>
+  <g>
+    <rect x="680" y="414" width="500" height="104" rx="16" fill="#132230" stroke="#2b4352" stroke-width="2"/>
+    <circle cx="730" cy="466" r="26" fill="#3a1a1c"/>
+    <path d="M720 456l20 20M740 456l-20 20" stroke="#ff7b72" stroke-width="4" stroke-linecap="round"/>
+    <text x="776" y="460" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" fill="#eef7f3">Upload failed</text>
+    <text x="776" y="492" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="17" fill="#8b9dab">toast.error()</text>
+    <text x="1150" y="448" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#5c6d7a">now</text>
+  </g>
+
+  <!-- framework chips -->
+  <g font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="17" fill="#9fb0bc">
+    <rect x="90" y="622" width="88" height="38" rx="19" fill="#16222d" stroke="#2b4352"/>
+    <text x="134" y="647" text-anchor="middle">Vue</text>
+    <rect x="190" y="622" width="94" height="38" rx="19" fill="#16222d" stroke="#2b4352"/>
+    <text x="237" y="647" text-anchor="middle">React</text>
+    <rect x="296" y="622" width="118" height="38" rx="19" fill="#16222d" stroke="#2b4352"/>
+    <text x="355" y="647" text-anchor="middle">Angular</text>
+    <rect x="426" y="622" width="132" height="38" rx="19" fill="#16222d" stroke="#2b4352"/>
+    <text x="492" y="647" text-anchor="middle">vanilla JS</text>
+    <rect x="570" y="622" width="112" height="38" rx="19" fill="#10281f" stroke="#2f6b52"/>
+    <text x="626" y="647" text-anchor="middle" fill="#7ee0b4">0 deps</text>
+  </g>
+</svg>

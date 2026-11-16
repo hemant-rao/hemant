@@ -80,18 +80,6 @@
         "bg_image": "../../assets/dailyfoodserve.png"
       },
       {
-        "proj_name": "Dneno.com",
-        "category": "personal",
-        "images": "../../assets/sahastrabahu.jpg",
-        "title_head": "Dneno.com",
-        "title": "Dneno.com",
-        "subTitle": "Bridging Worlds Through Language",
-        "organization_name": "hemantrao.in",
-        "favicon": "../../assets/sahastrabahu-favicon.png",
-        "link": "https://dneno.com/",
-        "bg_image": "../../assets/sahastrabahu.png"
-      },
-      {
         "proj_name": "Hemant Rao",
         "category": "personal",
         "images": "../../assets/vdo.ai.jpg",
@@ -102,6 +90,30 @@
         "favicon": "../../assets/dev.png",
         "link": "https://hemantrao.in/#/skills/",
         "bg_image": "../../assets/hemant-rao.png"
+      },
+      {
+        "proj_name": "ai-agent-bell",
+        "category": "npm",
+        "images": "../../assets/ai-agent-bell.svg",
+        "title_head": "ai-agent-bell",
+        "title": "ai-agent-bell",
+        "subTitle": "A loud alarm when your AI coding agent finishes, fails, or needs your input.",
+        "organization_name": "npmjs.com",
+        "favicon": "../../assets/ai-agent-bell-favicon.svg",
+        "link": "https://www.npmjs.com/package/ai-agent-bell",
+        "bg_image": "../../assets/ai-agent-bell.svg"
+      },
+      {
+        "proj_name": "universal-toast-message",
+        "category": "npm",
+        "images": "../../assets/universal-toast-message.svg",
+        "title_head": "universal-toast-message",
+        "title": "universal-toast-message",
+        "subTitle": "Zero-dependency toast notifications for vanilla JS, Vue, React and Angular.",
+        "organization_name": "npmjs.com",
+        "favicon": "../../assets/universal-toast-message-favicon.svg",
+        "link": "https://www.npmjs.com/package/universal-toast-message",
+        "bg_image": "../../assets/universal-toast-message.svg"
       },
       {
         "proj_name": "NPM Packages",
